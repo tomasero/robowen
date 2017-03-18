@@ -27,6 +27,7 @@ def read_data():
 	if r=='1':
 		make_popcorn()
 	print(r)
+	top.after(500, read_data)
 
 
 # Establish a connection with the Arduino
