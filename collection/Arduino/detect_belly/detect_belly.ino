@@ -23,7 +23,9 @@
 
 Adafruit_MMA8451 mma = Adafruit_MMA8451();
 
-// for simulated footdrop
+unsigned long time = 0;
+
+// for detecting belly
 float bellyArr[] = {-0.00975748,  0.05898267,  0.1972877 ,  0.33030744,  0.3870562 ,
                     0.2513518 , -0.02796029, -0.29437157, -0.27595468, -0.22089617,
                     -0.18336062, -0.09912632, -0.07430951, -0.07695034, -0.10330439,
@@ -64,19 +66,19 @@ float calcBelly() {
 void setup(void) {
         Serial.begin(115200);
 
-        Serial.println("Adafruit MMA8451 test!");
+//        Serial.println("Adafruit MMA8451 test!");
 
 
         if (! mma.begin()) {
                 Serial.println("Couldnt start");
                 while (1);
         }
-        Serial.println("MMA8451 found!");
+//        Serial.println("MMA8451 found!");
 
         mma.setRange(MMA8451_RANGE_2_G);
 
-        Serial.print("Range = "); Serial.print(2 << mma.getRange());
-        Serial.println("G");
+//        Serial.print("Range = "); Serial.print(2 << mma.getRange());
+//        Serial.println("G");
 
 }
 
@@ -102,9 +104,13 @@ void loop() {
         updateHistory(norm);
         float belly = calcBelly();
 
-        if(belly > 5) {
-          Serial.println(belly);
-        }
+        if((belly > 5) && ((millis() - time) > 2000)) {
+          Serial.println(1);
+          time = millis();
+        } 
+//        else {
+//          Serial.println(0);
+//        }
         
 
         /* Get the orientation of the sensor */
