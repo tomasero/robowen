@@ -7,7 +7,7 @@ def send_command(user_id, command, endpoint):
     data = {
     	'user_id': user_id,
         'token': config.token,
-        'command': config.command,
+        'command': command,
         'timestamp': time.time()
     }
     r = requests.post(endpoint, json=data)
@@ -16,7 +16,8 @@ def send_command(user_id, command, endpoint):
 
 def main():
 	user_id = 1
-	command = "popcorn"
+	command = "popTheCorn"
+	print(config)
 	send_command(1, command, config.endpoint)
 
 
