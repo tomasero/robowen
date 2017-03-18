@@ -23,15 +23,16 @@ c.pack(side='top', padx=30, pady=30)
 
 def read_data():
 	# read EMG data. If signal is a 1, send signal to make popcorn
-	r = ss.readline()
+	r = ss.readline().decode('ascii').strip()
 	if r=='1':
+		print(r)
 		make_popcorn()
-	print(r)
-	top.after(500, read_data)
+	
+	top.after(100, read_data)
 
 
 # Establish a connection with the Arduino
 ss = serial.Serial('/dev/cu.usbmodem1421', 115200) #(port='COM2', baudrate=115200)
-top.after(0, read_data) # This function runs 0s after mainloop runs and calls read_data after it executes
+top.after(100, read_data) # This function runs 0s after mainloop runs and calls read_data after it executes
 
 top.mainloop()
