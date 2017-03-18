@@ -2,8 +2,6 @@
 
 ## Requirements:
 * Python3.3 - 3.5+
-* OS in which you want to run the application in order to build executable
-
 
 ## Installation:
 
@@ -22,6 +20,8 @@ Run
 pyinstaller --windowed app.py
 ```
 
+*Note:* pyinstaller is s not a cross-compiler: to make a Windows app you run PyInstaller in Windows; to make a Linux app you run it in Linux, etc. 
+
 
 ## API
 
@@ -33,3 +33,4 @@ pyinstaller --windowed app.py
         'timestamp': time.time()
     }
 ```
+
