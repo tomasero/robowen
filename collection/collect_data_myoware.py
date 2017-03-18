@@ -4,18 +4,19 @@ import serial
 import csv
 from datetime import datetime
 import time
+import sys
 
-s = serial.Serial('/dev/cu.usbmodem1411',baudrate=115200)
+s = serial.Serial('/dev/cu.usbmodem1421',baudrate=115200)
 
-N_sensors = 3
+N_sensors = 1
 
 # tag = 'none'
 
 # header = ['timestamp', 'x', 'y', 'z', 'x_gyro', 'y_gyro', 'z_gyro', 'pressure']
-header = ['timestamp', 'x', 'y', 'z']
+header = ['timestamp', 'emg']
 
 date = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-fname = 'raw_data.csv'.format(date)
+fname = sys.argv[1]
 
 print(fname)
 
