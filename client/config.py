@@ -1,2 +1,2 @@
 token = 666
-endpoint = "test" #TODO
+endpoint = "https://7917fb9f.ngrok.io/cmd" #TODO

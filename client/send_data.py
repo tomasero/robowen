@@ -3,7 +3,7 @@ import datetime
 import time
 import config
 
-def send_command(user_id, token, command, endpoint):
+def send_command(user_id, command, token, endpoint):
     data = {
     	'user_id': user_id,
         'token': token,
@@ -17,11 +17,11 @@ def send_command(user_id, token, command, endpoint):
 def make_pocorn():
 	user_id = 1
 	command = "popcorn"
-	send_command(1, command, config.token, config.endpoint)
+	return send_command(1, command, config.token, config.endpoint)
 
 
 def main():
-	make_pocorn()
+	print(make_pocorn())
 
 
 if __name__ == "__main__":
