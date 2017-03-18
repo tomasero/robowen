@@ -10,9 +10,18 @@ def send_command(user_id, command, token, endpoint):
         'command': command,
         'timestamp': time.time()
     }
-    r = requests.post(endpoint, json=data)
-    return r.text
 
+    try:
+        response = requests.post(endpoint, json=data)
+
+        # Consider any status other than 2xx an error
+        if not response.status_code // 100 == 2:
+            return "Error: Unexpected response {}".format(response)
+
+        return r.text
+    except requests.exceptions.RequestException as e:
+        print(e)
+        sys.exit(1)
 
 def make_popcorn():
 	user_id = 1
