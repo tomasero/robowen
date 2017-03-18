@@ -3,10 +3,10 @@ import datetime
 import time
 import config
 
-def send_command(user_id, command, endpoint):
+def send_command(user_id, token, command, endpoint):
     data = {
     	'user_id': user_id,
-        'token': config.token,
+        'token': token,
         'command': command,
         'timestamp': time.time()
     }
@@ -14,11 +14,14 @@ def send_command(user_id, command, endpoint):
     return r.text
 
 
-def main():
+def make_pocorn():
 	user_id = 1
 	command = "popTheCorn"
-	print(config)
-	send_command(1, command, config.endpoint)
+	send_command(1, command, config.token, config.endpoint)
+
+
+def main():
+	make_pocorn()
 
 
 if __name__ == "__main__":
