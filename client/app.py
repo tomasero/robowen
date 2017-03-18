@@ -1,6 +1,8 @@
 from send_data import *
 from notebook import notebook
 
+import serial
+
 from tkinter import *
 
 root = Tk()
@@ -60,17 +62,19 @@ n1_f2_b1.pack(fill=BOTH, expand=1)
 n1_f2_b2 = Button(n2_f2, text="Button 8")
 n1_f2_b2.pack(fill=BOTH, expand=1) 
 
-def read_data():
-	# read EMG data. If signal is a 1, send signal to make popcorn
-	r = ss.readline().decode('ascii').strip()
-	if r=='1':
-		print(r)
-		make_popcorn()
-	
-	root.after(100, read_data)
 
-ss = serial.Serial('/dev/cu.usbmodem1421', 115200) #(port='COM2', baudrate=115200)
-root.after(100, read_data) # This function runs 0s after mainloop runs and calls read_data after it executes
+
+# def read_data():
+# 	# read EMG data. If signal is a 1, send signal to make popcorn
+# 	r = ss.readline().decode('ascii').strip()
+# 	if r=='1':
+# 		print(r)
+# 		make_popcorn()
+	
+# 	root.after(100, read_data)
+
+# ss = serial.Serial('/dev/cu.usbmodem1421', 115200) #(port='COM2', baudrate=115200)
+# root.after(100, read_data) # This function runs 0s after mainloop runs and calls read_data after it executes
 
 
 if __name__ == "__main__":
