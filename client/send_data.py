@@ -14,14 +14,15 @@ def send_command(user_id, command, token, endpoint):
     return r.text
 
 
-def make_pocorn():
+def make_popcorn():
 	user_id = 1
 	command = "popcorn"
-	return send_command(1, command, config.token, config.endpoint)
-
+	r = send_command(1, command, config.token, config.endpoint)
+	if config.debug:
+		print(r)
 
 def main():
-	print(make_pocorn())
+	make_popcorn()
 
 
 if __name__ == "__main__":
