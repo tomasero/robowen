@@ -20,7 +20,7 @@ Run
 pyinstaller --windowed app.py
 ```
 
-*Note:* pyinstaller is s not a cross-compiler: to make a Windows app you run PyInstaller in Windows; to make a Linux app you run it in Linux, etc. 
+**Note:** pyinstaller is s not a cross-compiler: to make a Windows app you run PyInstaller in Windows; to make a Linux app you run it in Linux, etc. 
 
 
 ## API
