@@ -16,7 +16,7 @@ def send_command(user_id, token, command, endpoint):
 
 def make_pocorn():
 	user_id = 1
-	command = "popTheCorn"
+	command = "popcorn"
 	send_command(1, command, config.token, config.endpoint)
 
 
