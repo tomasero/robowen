@@ -30,10 +30,13 @@ def writeToLog(msg):
     log.see(END)
     log['state'] = 'disabled'
 
+SECTION_BACKGROUND="#9DE7A0"
+SUBSECTION_BACKGROUND="#DAE2C1"
+
 root = Tk()
 app=FullScreenApp(root)
 root.wm_title("HAH - House Automation Hub")
-n = notebook(root, LEFT, select_bg="#9DE7A0")
+n = notebook(root, LEFT, select_bg=SECTION_BACKGROUND, select_color=SECTION_BACKGROUND)
 
 n_f1 = Frame(n())
 n_f2 = Frame(n())
@@ -44,7 +47,7 @@ n.add_screen(n_f2, "Office") #Screen 2
 
 ######## START HOUSE ########
 
-house = notebook(n_f1, LEFT, select_bg="#DAE2C1")
+house = notebook(n_f1, LEFT, select_bg=SUBSECTION_BACKGROUND, select_color=SUBSECTION_BACKGROUND)
 house_f1 = Frame(house())
 house_f2 = Frame(house())
 house_f3 = Frame(house())
@@ -89,7 +92,7 @@ heater_scale.pack(side=LEFT)
 #TODO: the following is just a placeholder
 ## ---- n2 ----
 # Nested
-n2 = notebook(n_f2, LEFT)
+n2 = notebook(n_f2, LEFT, select_bg=SUBSECTION_BACKGROUND, select_color=SUBSECTION_BACKGROUND)
 n2_f1 = Frame(n2())
 n2_f2 = Frame(n2())
 
@@ -115,10 +118,20 @@ house_f2_b2.pack()
 status_label = Label(root, text="Log:")
 status_label.pack()
 
-
+S = Scrollbar(root)
 log = Text(root, state='disabled', width=80, height=24, wrap='none', relief=GROOVE, borderwidth=2)
-log.config(font=("Courier", 24))
-log.pack(fill=BOTH, expand=1)
+log.config(font=("Courier", 14))
+S.pack(side=RIGHT, fill=Y)
+log.pack(side=LEFT, expand=1, fill=Y)
+S.config(command=log.yview)
+log.config(yscrollcommand=S.set)
+
+# S = Scrollbar(root)
+# T = Text(root, height=4, width=50)
+# S.pack(side=RIGHT, fill=Y)
+# T.pack(side=LEFT, fill=Y)
+# S.config(command=T.yview)
+# T.config(yscrollcommand=S.set)
 
 ######## END OFFICE ########
 
