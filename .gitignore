@@ -1,6 +1,4 @@
 
-
-
 ##### Python Stuff ####
 
 # Byte-compiled / optimized / DLL files
@@ -97,3 +95,8 @@ ENV/
 
 # Rope project settings
 .ropeproject
+.ipynb_checkpoints
+*#*
+.DS_Store
+*lck
+
