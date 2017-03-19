@@ -1,3 +1,3 @@
 token = 666
-endpoint = "https://7917fb9f.ngrok.io/cmd"
+endpoint = "https://a00514f2.ngrok.io/cmd"
 debug = True
