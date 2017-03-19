@@ -57,14 +57,14 @@ lightsradio_button = house.add_screen(house_f4, "Lights") #Screen 1_4
 
 
 ## HOUSE > f1 (Door)
-house_f1_b1 = Button(house_f1, text="Open Door",  command = lambda: writeToLog(open_door()), pady=20)
+house_f1_b1 = Button(house_f1, text="Open Door",  command = lambda: writeToLog(open_door()), pady=30)
 house_f1_b1.pack(fill=BOTH, expand=1) 
 # house_f1_b2 = Button(house_f1, text="Prop Open Door",  command = lambda: writeToLog("Prop Open Door"))
 # house_f1_b2.pack(fill=BOTH, expand=1) 
 
 
 ## HOUSE > f2 (Kitchen Appliances)
-make_popcorn_btn = Button(house_f2, text="Make Popcorn!", command = lambda: writeToLog(make_popcorn()))
+make_popcorn_btn = Button(house_f2, text="Make Popcorn!", command = lambda: writeToLog(make_popcorn()), pady=30)
 make_popcorn_btn.pack(fill=BOTH, expand=1) 
 
 ## HOUSE > f3 (Heater)
@@ -74,7 +74,7 @@ heater_scale = Scale(house_f3, from_=0, to=200, orient=HORIZONTAL, command = lam
 heater_scale.pack(side=LEFT)
 
 ## HOUSE > f4 (Lights)
-lights_btn = Button(house_f4, text="Turn Lights on!", command = lambda: writeToLog(light_on()))
+lights_btn = Button(house_f4, text="Turn Lights on!", command = lambda: writeToLog(light_on()), pady=30)
 lights_btn.pack(fill=BOTH, expand=1) 
 
 ## HOUSE > f4
