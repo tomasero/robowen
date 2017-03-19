@@ -27,7 +27,7 @@ def writeToLog(msg):
     if log.index('end-1c')!='1.0':
         log.insert('end', '\n')
     log.insert('end', msg)
-    cls.text.see(Tkinter.END)
+    log.see(END)
     log['state'] = 'disabled'
 
 root = Tk()
@@ -110,8 +110,10 @@ house_f2_b2.pack()
 
 
 status_label = Label(root, text="Log:")
-log = Text(root, state='disabled', width=80, height=24, wrap='none', relief=GROOVE, borderwidth=2)
 status_label.pack()
+
+
+log = Text(root, state='disabled', width=80, height=24, wrap='none', relief=GROOVE, borderwidth=2)
 log.pack(fill=BOTH, expand=1)
 
 ######## END OFFICE ########
