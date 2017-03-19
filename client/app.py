@@ -36,7 +36,7 @@ SUBSECTION_BACKGROUND="#DAE2C1"
 root = Tk()
 app=FullScreenApp(root)
 root.wm_title("HAH - House Automation Hub")
-n = notebook(root, LEFT, select_bg=SECTION_BACKGROUND)
+n = notebook(root, LEFT, select_bg=SECTION_BACKGROUND, select_color=SECTION_BACKGROUND)
 
 n_f1 = Frame(n())
 n_f2 = Frame(n())
@@ -47,7 +47,7 @@ n.add_screen(n_f2, "Office") #Screen 2
 
 ######## START HOUSE ########
 
-house = notebook(n_f1, LEFT, select_bg=SUBSECTION_BACKGROUND)
+house = notebook(n_f1, LEFT, select_bg=SUBSECTION_BACKGROUND, select_color=SUBSECTION_BACKGROUND)
 house_f1 = Frame(house())
 house_f2 = Frame(house())
 house_f3 = Frame(house())
@@ -92,7 +92,7 @@ heater_scale.pack(side=LEFT)
 #TODO: the following is just a placeholder
 ## ---- n2 ----
 # Nested
-n2 = notebook(n_f2, LEFT, select_bg=SUBSECTION_BACKGROUND)
+n2 = notebook(n_f2, LEFT, select_bg=SUBSECTION_BACKGROUND, select_color=SUBSECTION_BACKGROUND)
 n2_f1 = Frame(n2())
 n2_f2 = Frame(n2())
 
