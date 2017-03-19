@@ -47,10 +47,7 @@ void loop() {
   }
   Mouse.move(x, y, 0);
 
-  // Anolog Inputs for Clicking (EMG)
-
 //  DRAG CLICK FOR STOMACH BUTTON SIGNAL
-//
 //  ANALOG VERSION
   if (analogRead(A2) > 420) {
     if (drag_clicked == 0 && drag_count > click_delay) {
@@ -81,35 +78,23 @@ void loop() {
 
 // RIGHT CLICK
   if (analogRead(A3) > 420) {
-    if (right_clicked == 0 && right_count > click_delay) {
+    if (right_count > click_delay) {
       Mouse.click(MOUSE_RIGHT);
-//      right_clicked = 1;
       right_count = 0;
-    } //else if (right_clicked == 1 && right_count > click_delay) {
-//      Mouse.click(MOUSE_RIGHT);
-//      right_clicked = 1;
-//      right_count = 0;
-//    }
+    }
     right_count = right_count + 1;
   } else {
-//    right_clicked = 0;
     right_count = click_delay + 1;
   }
 
 // LEFT CLICK
-//  if (analogRead(A2) > 420) {
-//    if (left_clicked == 0 && left_count > click_delay) {
+//  if (analogRead(A1) > 420) {
+//    if (left_count > click_delay) {
 //      Mouse.click();
-////      left_clicked = 1;
 //      left_count = 0;
-//    } //else if (left_clicked == 1 && left_count > click_delay) {
-////      Mouse.click();
-////      left_clicked = 1;
-////      left_count = 0;
-////    }
+//    }
 //    left_count = left_count + 1;
 //  } else {
-////    left_clicked = 0;
 //    left_count = click_delay + 1;
 //  }
   
