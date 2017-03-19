@@ -52,10 +52,6 @@ var relay = {
 
 function activateRelay(command) {
     console.log("activateRelay");
-    console.log(command);
-    console.log(relay);
-    console.log(relay[command]);
-    console.log(states[command]);
     var state = (states[command] ? "LOW" : "HIGH");
     states[command] = (states[command] + 1) % 2;
     rest.post(relayURI, {
