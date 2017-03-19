@@ -35,7 +35,7 @@ class notebook:
 
 		b = Radiobutton(self.rb_fr, text=title, indicatoron=0, \
 			variable=self.choice, value=self.count, \
-			command=lambda: self.display(fr),height=10, width=10, selectcolor=self.select_color, bg=self.select_bg)
+			command=lambda: self.display(fr),height=6, width=13, selectcolor=self.select_color, bg=self.select_bg, font=("Calibri", 16))
 
 		b.grid(row=self.number_of_screens,column=0, sticky="nsew")
 		self.rb_fr.rowconfigure(self.number_of_screens, weight=1)
