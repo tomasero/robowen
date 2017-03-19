@@ -30,13 +30,13 @@ def add_timestamp():
 
 def make_popcorn():
 	user_id = 1
-	command = "Popcorn"
+	command = "popcorn"
 	return add_timestamp() + send_command(1, command, config.token, config.endpoint)
 
 
 def open_door():
 	user_id = 1
-	command = "Door"
+	command = "door"
 	return add_timestamp() + send_command(1, command, config.token, config.endpoint)
 
 # def prop_open_door():
@@ -46,7 +46,7 @@ def open_door():
 
 def light_on():
     user_id = 1
-    command = "Light"
+    command = "light"
     return add_timestamp() + send_command(1, command, config.token, config.endpoint)
 
 
