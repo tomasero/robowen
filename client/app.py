@@ -33,7 +33,7 @@ def writeToLog(msg):
 root = Tk()
 app=FullScreenApp(root)
 root.wm_title("HAH - House Automation Hub")
-n = notebook(root, LEFT)
+n = notebook(root, LEFT, select_bg="#9DE7A0")
 
 n_f1 = Frame(n())
 n_f2 = Frame(n())
@@ -44,20 +44,20 @@ n.add_screen(n_f2, "Office") #Screen 2
 
 ######## START HOUSE ########
 
-house = notebook(n_f1, LEFT)
+house = notebook(n_f1, LEFT, select_bg="#DAE2C1")
 house_f1 = Frame(house())
 house_f2 = Frame(house())
 house_f3 = Frame(house())
 house_f4 = Frame(house())
 
 door_radio_button = house.add_screen(house_f1, "Door") #Screen 1_1
-kitchen_appliances_radio_button = house.add_screen(house_f2, "Kitchen Appliances") #Screen 1_2
+kitchen_appliances_radio_button = house.add_screen(house_f2, "Kitchen\nAppliances") #Screen 1_2
 # heater_radio_button = house.add_screen(house_f3, "Heater") #Screen 1_3
 lightsradio_button = house.add_screen(house_f4, "Lights") #Screen 1_4
 
 
 ## HOUSE > f1 (Door)
-house_f1_b1 = Button(house_f1, text="Open Door",  command = lambda: writeToLog(open_door()))
+house_f1_b1 = Button(house_f1, text="Open Door",  command = lambda: writeToLog(open_door()), pady=20)
 house_f1_b1.pack(fill=BOTH, expand=1) 
 # house_f1_b2 = Button(house_f1, text="Prop Open Door",  command = lambda: writeToLog("Prop Open Door"))
 # house_f1_b2.pack(fill=BOTH, expand=1) 
@@ -115,6 +115,7 @@ status_label.pack()
 
 
 log = Text(root, state='disabled', width=80, height=24, wrap='none', relief=GROOVE, borderwidth=2)
+log.config(font=("Courier", 24))
 log.pack(fill=BOTH, expand=1)
 
 ######## END OFFICE ########
