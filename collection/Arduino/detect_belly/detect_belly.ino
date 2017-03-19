@@ -100,18 +100,18 @@ void loop() {
         /* Serial.print(event.acceleration.z); */
 
         float norm = sqrt(sq(event.acceleration.x) + sq(event.acceleration.y) + sq(event.acceleration.z));
-        
+
         updateHistory(norm);
         float belly = calcBelly();
 
         if((belly > 5) && ((millis() - time) > 2000)) {
           Serial.println(1);
           time = millis();
-        } 
+        }
 //        else {
 //          Serial.println(0);
 //        }
-        
+
 
         /* Get the orientation of the sensor */
         /* uint8_t o = mma.getOrientation(); */
