@@ -26,15 +26,15 @@ unsigned long drag_start = 0;
 unsigned long nudge_start = 0;
 unsigned long timer = 0;
 
-boolean chair_state = true;
-boolean chair_on_off = false;
+boolean chair_on = true;
+boolean hold_detected = false;
 
 void setup() {
   Serial.begin(115200);
   pinMode(A2, INPUT);
   pinMode(A3, INPUT);
   pinMode(A4, INPUT);
-  pinMode(A5, INPUT);
+  pinMode(A5, OUTPUT);
   Mouse.begin();
 }
 
@@ -81,20 +81,26 @@ void loop() {
 
   // Chair on/off detection
   if (leftDetect && rightDetect) {
-    if (chair_on_off) {
+    if (hold_detected) {
       if (currTime - timer > emg_power_delay){
-        chair_state = !chair_state;
-        chair_on_off = false;
+        chair_on = !chair_on;
+        hold_detected = false;
       }
     }
     else {
       timer = millis();
-      chair_on_off = true;
+      hold_detected = true;
     }
   }
 
+  // update LED
+  if(chair_on) {
+       digitalWrite(A5, HIGH);
+  } else {
+       digitalWrite(A5, LOW);
+  }
 
-  if (!chair_state) {
+  if (!chair_on) {
     return;
   }
 
