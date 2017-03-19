@@ -49,10 +49,10 @@ house_f2 = Frame(house())
 house_f3 = Frame(house())
 house_f4 = Frame(house())
 
-house.add_screen(house_f1, "Door") #Screen 1_1
-house.add_screen(house_f2, "Kitchen Appliances") #Screen 1_2
-house.add_screen(   house_f3, "Heater") #Screen 1_3
-house.add_screen(house_f4, "Lights") #Screen 1_4
+door_radio_button = house.add_screen(house_f1, "Door") #Screen 1_1
+kitchen_appliances_radio_button = house.add_screen(house_f2, "Kitchen Appliances") #Screen 1_2
+# heater_radio_button = house.add_screen(house_f3, "Heater") #Screen 1_3
+# lightsradio_button = house.add_screen(house_f4, "Lights") #Screen 1_4
 
 
 ## HOUSE > f1 (Door)
