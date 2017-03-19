@@ -67,15 +67,17 @@ house_f1_b1.pack(fill=BOTH, expand=1)
 make_popcorn_btn = Button(house_f2, text="Make Popcorn!", command = lambda: writeToLog(make_popcorn()), pady=30)
 make_popcorn_btn.pack(fill=BOTH, expand=1) 
 
-## HOUSE > f3 (Heater)
-status_lbl = Label(house_f3, text="Temperature")
-status_lbl.pack(side = LEFT)
-heater_scale = Scale(house_f3, from_=0, to=200, orient=HORIZONTAL, command = lambda: writeToLog("Temperature adjusted to X"))
-heater_scale.pack(side=LEFT)
-
 ## HOUSE > f4 (Lights)
 lights_btn = Button(house_f4, text="Turn Lights on!", command = lambda: writeToLog(light_on()), pady=30)
 lights_btn.pack(fill=BOTH, expand=1) 
+
+## HOUSE > f3 (Heater)
+status_lbl = Label(house_f4, text="Light\nintensity", padx=30, pady=30)
+status_lbl.pack(side = LEFT)
+heater_scale = Scale(house_f4, from_=0, to=100, orient=HORIZONTAL, length=300)#, command = lambda: writeToLog("Temperature adjusted to X"))
+heater_scale.pack(side=LEFT)
+
+
 
 ## HOUSE > f4
 #TODO
