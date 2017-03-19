@@ -25,14 +25,18 @@ def send_command(user_id, command, token, endpoint):
 
 def make_popcorn():
 	user_id = 1
-	command = "popcorn"
-	return send_command(1, command, config.token, config.endpoint)
+	command = "Popcorn"
+	ts=time.time()
+	st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+	return "[ "+st+" ]: "+ send_command(1, command, config.token, config.endpoint)
 
 
 def open_door():
 	user_id = 1
-	command = "door"
-	return send_command(1, command, config.token, config.endpoint)
+	command = "Door"
+	ts=time.time()
+	st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+	return "[ "+st+" ]: "+ send_command(1, command, config.token, config.endpoint)
 
 # def prop_open_door():
 # 	user_id = 1
