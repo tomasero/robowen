@@ -54,7 +54,7 @@
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
-<layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
@@ -156,18 +156,20 @@
 </layers>
 <board>
 <plain>
-<wire x1="0" y1="36.5" x2="0" y2="-3.175" width="0" layer="20"/>
-<wire x1="0" y1="-3.175" x2="2.54" y2="-5.715" width="0" layer="20" curve="90"/>
-<wire x1="2.54" y1="-5.715" x2="20.3" y2="-5.715" width="0" layer="20"/>
-<wire x1="20.3" y1="-5.715" x2="22.84" y2="-3.175" width="0" layer="20" curve="90"/>
 <wire x1="22.84" y1="-3.175" x2="22.84" y2="36.5" width="0" layer="20"/>
 <wire x1="22.84" y1="36.5" x2="20.3" y2="39.04" width="0" layer="20" curve="90"/>
 <wire x1="20.3" y1="39.04" x2="2.54" y2="39.04" width="0" layer="20"/>
 <wire x1="2.54" y1="39.04" x2="0" y2="36.5" width="0" layer="20" curve="90"/>
+<wire x1="0" y1="36.5" x2="0" y2="-3.175" width="0" layer="20"/>
+<wire x1="0" y1="-3.175" x2="2.54" y2="-5.715" width="0" layer="20" curve="90"/>
+<wire x1="2.54" y1="-5.715" x2="20.3" y2="-5.715" width="0" layer="20"/>
+<wire x1="20.3" y1="-5.715" x2="22.84" y2="-3.175" width="0" layer="20" curve="90"/>
 <text x="4.445" y="-1.27" size="1.397" layer="1" font="vector" ratio="19" align="center">Sesame</text>
 <text x="4.445" y="-3.175" size="1.143" layer="1" font="vector" ratio="23" align="center">RevA</text>
 <text x="17.78" y="-1.27" size="1.778" layer="1" font="vector" ratio="20" align="center">TOM</text>
 <text x="18.415" y="-3.175" size="0.889" layer="1" font="vector" ratio="29" align="center">Berkeley 17</text>
+<dimension x1="22.84" y1="-5.715" x2="22.84" y2="39.04" x3="26.67" y3="16.6625" textsize="1.778" layer="47"/>
+<dimension x1="22.84" y1="39.04" x2="0" y2="39.04" x3="11.42" y3="41.91" textsize="1.778" layer="47"/>
 </plain>
 <libraries>
 <library name="SparkFun-Connectors">
