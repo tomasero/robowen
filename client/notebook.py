@@ -50,6 +50,7 @@ class notebook:
 
 			self.count += 1
 
+		self.count+=1
 		# returns a reference to the newly created
 		# radiobutton (allowing its configuration/destruction)         
 		return b
