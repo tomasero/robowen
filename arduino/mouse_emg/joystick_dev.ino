@@ -12,15 +12,17 @@ Myoware rightEMG(A1);
 float myo_threshold = 6;
 
 int responseDelay = 5;
-int x, y;
-int click_delay = 500;
-int left_count = 501;
-int left_clicked = 0;
-int right_count = 501;
-int right_clicked = 0;
+int click_delay = 2500; // in ms
 
-int drag_count = 501;
+int x, y;
+
+int left_clicked = 0;
+int right_clicked = 0;
 int drag_clicked = 0;
+
+unsigned long left_start = 0;
+unsigned long right_start = 0;
+unsigned long drag_start = 0;
 
 void setup() {
   pinMode(A2, INPUT);
@@ -57,23 +59,21 @@ void loop() {
   boolean leftDetect = left.getFlex() > myo_threshold;
   boolean rightDetect = right.getFlex() > myo_threshold;
 
+  unsigned long currTime = millis();
+
 //  DRAG CLICK FOR STOMACH BUTTON SIGNAL
 //  ANALOG VERSION
   if (leftDetect) {
-    if (drag_clicked == 0 && drag_count > click_delay) {
+    if (drag_clicked == 0 && (currTime-drag_start) > click_delay) {
       Mouse.press();
       drag_clicked = 1;
-      drag_count = 0;
-    } else if (drag_clicked == 1 && drag_count > click_delay) {
+      drag_start = millis();
+    } else if (drag_clicked == 1 && (currTime-drag_start) > click_delay) {
       Mouse.release();
       drag_clicked = 0;
-      drag_count = 0;
+      drag_start = millis();
     }
-    drag_count = drag_count + 1;
-  } else {
-    drag_count = click_delay + 1;
   }
-
 //  DIGITAL VERSION
 //  if ( "stomach button event" ) {
 //    if (drag_clicked == 0) {
@@ -83,30 +83,24 @@ void loop() {
 //      Mouse.release();
 //      drag_clicked = 0;
 //    }
-//    drag_count = drag_clicked + 1;
+//    drag_start = drag_clicked + 1;
 //  }
 
 // RIGHT CLICK
   if (rightDetect) {
-    if (right_count > click_delay) {
+    if ((currTime-right_start) > click_delay) {
       Mouse.click(MOUSE_RIGHT);
-      right_count = 0;
+      right_start = millis();
     }
-    right_count = right_count + 1;
-  } else {
-    right_count = click_delay + 1;
   }
 
 // LEFT CLICK
- if (leftDetect) {
-   if (left_count > click_delay) {
-     Mouse.click();
-     left_count = 0;
-   }
-   left_count = left_count + 1;
- } else {
-   left_count = click_delay + 1;
- }
+  if (leftDetect) {
+    if ((currTime-left_start) > click_delay) {
+      Mouse.click();
+      left_start = millis();
+    }
+  }
 
   delay(responseDelay);
 }
