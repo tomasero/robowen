@@ -11,7 +11,7 @@ class notebook:
 		self.choice = IntVar(0)
 		self.number_of_screens=0
 		self.select_color = select_color
-		self.select_bg = select_bgv
+		self.select_bg = select_bg
 
 		# allows the TOP and BOTTOM
 		# radiobuttons' positioning.
