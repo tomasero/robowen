@@ -2,7 +2,7 @@
 
     Multimodal input device for IoT infrastucture
 
-###Team
+### Team
     - Alejandro García
     - Adam Hutz
     - Corten Singer
