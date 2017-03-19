@@ -98,15 +98,15 @@ void loop() {
   }
 
 // LEFT CLICK
-//  if (analogRead(A1) > 420) {
-//    if (left_count > click_delay) {
-//      Mouse.click();
-//      left_count = 0;
-//    }
-//    left_count = left_count + 1;
-//  } else {
-//    left_count = click_delay + 1;
-//  }
+ if (leftDetect) {
+   if (left_count > click_delay) {
+     Mouse.click();
+     left_count = 0;
+   }
+   left_count = left_count + 1;
+ } else {
+   left_count = click_delay + 1;
+ }
 
   delay(responseDelay);
 }
