@@ -6,13 +6,12 @@
 
 Adafruit_MMA8451 mma = Adafruit_MMA8451();
 
-Myoware leftEMG(A0);
-Myoware rightEMG(A1);
+Myoware leftEMG(A2);
+Myoware rightEMG(A3);
 
-float myo_threshold = 6;
+float myo_threshold = 0.25;
 
-int responseDelay = 5;
-int click_delay = 2500; // in ms
+int click_delay = 1300; // in ms
 
 int x, y;
 
@@ -25,6 +24,7 @@ unsigned long right_start = 0;
 unsigned long drag_start = 0;
 
 void setup() {
+  Serial.begin(115200);
   pinMode(A2, INPUT);
   pinMode(A3, INPUT);
   pinMode(A4, INPUT);
@@ -56,51 +56,56 @@ void loop() {
   }
   Mouse.move(x, y, 0);
 
-  boolean leftDetect = left.getFlex() > myo_threshold;
-  boolean rightDetect = right.getFlex() > myo_threshold;
+  float rightFlex = rightEMG.getFlex();
+  Serial.print(rightFlex * 100);
+  Serial.print(" ");
+  float leftFlex = leftEMG.getFlex();
+  Serial.println(leftFlex * 100);
+  
+  boolean leftDetect = leftFlex > myo_threshold;
+  boolean rightDetect = rightFlex > myo_threshold;
 
   unsigned long currTime = millis();
 
-//  DRAG CLICK FOR STOMACH BUTTON SIGNAL
-//  ANALOG VERSION
+  //  DRAG CLICK
+  //  ANALOG VERSION
   if (leftDetect) {
-    if (drag_clicked == 0 && (currTime-drag_start) > click_delay) {
+    if (drag_clicked == 0) { //&& (currTime - drag_start) > click_delay) {
       Mouse.press();
       drag_clicked = 1;
-      drag_start = millis();
-    } else if (drag_clicked == 1 && (currTime-drag_start) > click_delay) {
-      Mouse.release();
-      drag_clicked = 0;
-      drag_start = millis();
     }
+  } else {
+    Mouse.release();
+    drag_clicked = 0;
   }
-//  DIGITAL VERSION
-//  if ( "stomach button event" ) {
-//    if (drag_clicked == 0) {
-//      Mouse.press();
-//      drag_clicked = 1;
-//    } else if (drag_clicked == 1) {
-//      Mouse.release();
-//      drag_clicked = 0;
-//    }
-//    drag_start = drag_clicked + 1;
-//  }
 
-// RIGHT CLICK
+  //  DIGITAL VERSION
+  //  if ( "stomach button event" ) {
+  //    if (drag_clicked == 0) {
+  //      Mouse.press();
+  //      drag_clicked = 1;
+  //    } else if (drag_clicked == 1) {
+  //      Mouse.release();
+  //      drag_clicked = 0;
+  //    }
+  //    drag_start = drag_clicked + 1;
+  //  }
+
+  // RIGHT CLICK
   if (rightDetect) {
-    if ((currTime-right_start) > click_delay) {
+    if ((currTime - right_start) > click_delay) {
       Mouse.click(MOUSE_RIGHT);
       right_start = millis();
     }
   }
 
-// LEFT CLICK
-  if (leftDetect) {
-    if ((currTime-left_start) > click_delay) {
-      Mouse.click();
-      left_start = millis();
-    }
-  }
-
-  delay(responseDelay);
+  // LEFT CLICK
+  //  if (leftDetect) {
+  //    if ((currTime-left_start) > click_delay) {
+  //      Mouse.press();
+  //      left_start = millis();
+  //    }
+  //  } else {
+  //    Mouse.release();
+  //  }
 }
