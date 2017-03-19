@@ -9,6 +9,7 @@ class notebook:
 		self.active_fr = None
 		self.count = 0
 		self.choice = IntVar(0)
+		self.number_of_screens=0
 
 		# allows the TOP and BOTTOM
 		# radiobuttons' positioning.
@@ -29,10 +30,15 @@ class notebook:
 
 	# add a new frame (screen) to the (bottom/left of the) notebook
 	def add_screen(self, fr, title):
+
 		b = Radiobutton(self.rb_fr, text=title, indicatoron=0, \
 			variable=self.choice, value=self.count, \
-			command=lambda: self.display(fr))
-		b.pack(fill=BOTH, side=self.side)
+			command=lambda: self.display(fr),height=10, width=10, selectcolor='gray',bg='gray')
+
+		b.grid(row=self.number_of_screens,column=0, sticky="nsew")
+		self.rb_fr.rowconfigure(self.number_of_screens, weight=1)
+		self.number_of_screens+=1
+		''
 		
 		# ensures the first frame will be
 		# the first selected/enabled
