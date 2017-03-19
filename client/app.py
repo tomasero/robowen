@@ -32,6 +32,7 @@ def writeToLog(msg):
 
 root = Tk()
 app=FullScreenApp(root)
+root.wm_title("HAH - House Automation Hub")
 n = notebook(root, LEFT)
 
 n_f1 = Frame(n())

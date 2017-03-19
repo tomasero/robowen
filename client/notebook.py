@@ -4,12 +4,14 @@ class notebook:
 	
 	# initialization. receives the master widget
 	# reference and the notebook orientation
-	def __init__(self, master, side=LEFT):
+	def __init__(self, master, side=LEFT, select_color = 'gray', select_bg = 'gray'):
 		
 		self.active_fr = None
 		self.count = 0
 		self.choice = IntVar(0)
 		self.number_of_screens=0
+		self.select_color = select_color
+		self.select_bg = select_bgv
 
 		# allows the TOP and BOTTOM
 		# radiobuttons' positioning.
@@ -33,7 +35,7 @@ class notebook:
 
 		b = Radiobutton(self.rb_fr, text=title, indicatoron=0, \
 			variable=self.choice, value=self.count, \
-			command=lambda: self.display(fr),height=10, width=10, selectcolor='gray',bg='gray')
+			command=lambda: self.display(fr),height=10, width=10, selectcolor=self.select_color, bg=self.select_bg)
 
 		b.grid(row=self.number_of_screens,column=0, sticky="nsew")
 		self.rb_fr.rowconfigure(self.number_of_screens, weight=1)
