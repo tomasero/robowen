@@ -23,20 +23,21 @@ def send_command(user_id, command, token, endpoint):
         print(e)
         sys.exit(1)
 
+def add_timestamp():
+	ts=time.time()
+	st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+	return "["+st+"]: "
+
 def make_popcorn():
 	user_id = 1
 	command = "Popcorn"
-	ts=time.time()
-	st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
-	return "[ "+st+" ]: "+ send_command(1, command, config.token, config.endpoint)
+	return add_timestamp() + send_command(1, command, config.token, config.endpoint)
 
 
 def open_door():
 	user_id = 1
 	command = "Door"
-	ts=time.time()
-	st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
-	return "[ "+st+" ]: "+ send_command(1, command, config.token, config.endpoint)
+	return add_timestamp() + send_command(1, command, config.token, config.endpoint)
 
 # def prop_open_door():
 # 	user_id = 1
@@ -45,8 +46,8 @@ def open_door():
 
 def light_on():
     user_id = 1
-    command = "light"
-    return send_command(1, command, config.token, config.endpoint)
+    command = "Light"
+    return add_timestamp() + send_command(1, command, config.token, config.endpoint)
 
 
 def main():
