@@ -73,7 +73,8 @@ void loop() {
 
 
   unsigned long currTime = millis();
-   // Chair on/off detection
+
+  // Chair on/off detection
   if (leftDetect) && (rightDetect) {
     if (chair_on_off) {
       if (currTime - timer > emg_power_delay){
