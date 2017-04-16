@@ -3,6 +3,10 @@ import datetime
 import time
 import config
 
+def update_ip(new_ip):
+    config.endpoint = new_ip
+    return config.endpoint
+
 def send_command(user_id, command, token, endpoint):
     data = {
     	'user_id': user_id,
