@@ -40,10 +40,10 @@ root.wm_title("HAH - House Automation Hub")
 n = notebook(root, LEFT, select_bg=SECTION_BACKGROUND, select_color=SECTION_BACKGROUND)
 
 update_ip_btn = Button(root, text="Update IP",  command = lambda: writeToLog("Server IP set to: " + update_ip(ip_entry.get())), pady=5)
-update_ip_btn.pack(side=BOTTOM)
+update_ip_btn.pack(fill=BOTH, side=BOTTOM)
 
 ip_entry = Entry(root, bd =5)
-ip_entry.pack(side=BOTTOM)
+ip_entry.pack(fill=BOTH, side=BOTTOM)
 
 n_f1 = Frame(n())
 n_f2 = Frame(n())
