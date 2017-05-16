@@ -18,7 +18,6 @@ def send_command(user_id, command, token, endpoint):
 
     try:
         response = requests.post(endpoint + "/cmd", json=data)
-
         # Consider any status other than 2xx an error
         if not response.status_code // 100 == 2:
             return "Error: Unexpected response {}".format(response)
