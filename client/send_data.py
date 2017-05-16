@@ -2,6 +2,7 @@ import requests
 import datetime
 import time
 import config
+import sys
 
 def update_ip(new_ip):
     config.endpoint = new_ip
@@ -52,11 +53,3 @@ def light_on():
     user_id = 1
     command = "light"
     return add_timestamp() + send_command(1, command, config.token, config.endpoint)
-
-
-def main():
-	make_popcorn()
-
-
-if __name__ == "__main__":
-    main()

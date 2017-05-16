@@ -34,3 +34,9 @@ pyinstaller --windowed app.py
     }
 ```
 
+## Testing w/o UI:
+
+```
+	send_command(1, "popcorn", 666, 'http://localhost:3000')
+```
+
